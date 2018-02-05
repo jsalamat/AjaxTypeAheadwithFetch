@@ -65,7 +65,16 @@ function findMatches(wordToMatch, cities) {
 // this to test and select the input
 function displayMatches() {
 	const matchArray = findMatches(this.value, cities);
-	console.log(matchArray);
+	// console.log(matchArray);
+	const html = matchArray.map(place => {
+		return `
+			<li>
+				<span class='name'>${place.city}, ${place.state}</span>
+				<span class='population'>${place.population}</span>
+			</li>
+		`;
+	}).join('')
+	suggestions.innerHTML = html;
 }
 
 // select the input 
@@ -79,4 +88,10 @@ searchInput.addEventListener('keyup', displayMatches);
 
 // return to displayMactches and use findMatches
 // variable matchArray that passed in this value and cities array
-//
+
+// once we get data and return, need to loopover matchArray
+// form each we return
+// once map over the array 
+// from each of those return backticks list item
+// once map over the array, call suggestions.innerHTML = html
+// map will return an array so we add .join(' ') to return string
