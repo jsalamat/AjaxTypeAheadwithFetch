@@ -1,3 +1,4 @@
+// AjaxTypeAheadwithFetch
 //JSON File contain State Name and population
 // fetch the data [array]
 // filter data to subset either city name or state name that match
