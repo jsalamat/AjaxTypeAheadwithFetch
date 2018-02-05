@@ -37,3 +37,23 @@ fetch(endpoint)
 fetch(endpoint)
    .then(blob => blob.json())
    .then(data => cities.push(...data));
+
+//-------------------------------------------------------------------------------------------
+// when type into class search-form
+// run function that take the mass of array
+// filter it to subset and listen for it
+
+// function findMatches with parameter wordToMatch and cities from the array to pass into the data
+// return the cities array and filter it down to a subset array which each place
+// here we need to figure out if the city ot state matches what was searched
+ 	// need to use regex because of variable to use in match reiere regular expression
+ 	// regualr expression created outside
+
+function findMatches(wordToMatch, cities) {
+	return cities.filter(place => {
+		// here we need to figure out if the city ot state matches what was searched
+		const regex = new RegExp(wordToMatch, 'gi');
+		return place.city.match(regex) || place.state.match(regex)
+	});
+}
+
