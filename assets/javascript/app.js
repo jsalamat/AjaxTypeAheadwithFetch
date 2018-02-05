@@ -59,6 +59,10 @@ function findMatches(wordToMatch, cities) {
 	});
 }
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 // create a display function
 // if called when values are change in the form
 
@@ -67,10 +71,13 @@ function displayMatches() {
 	const matchArray = findMatches(this.value, cities);
 	// console.log(matchArray);
 	const html = matchArray.map(place => {
+		const regex = new RegExp(this.value, 'gi')
+		const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+		const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
 		return `
 			<li>
-				<span class='name'>${place.city}, ${place.state}</span>
-				<span class='population'>${place.population}</span>
+				<span class='name'>${cityName}, ${stateName}</span>
+				<span class="population">${numberWithCommas(place.population)}</span>
 			</li>
 		`;
 	}).join('')
@@ -95,3 +102,8 @@ searchInput.addEventListener('keyup', displayMatches);
 // from each of those return backticks list item
 // once map over the array, call suggestions.innerHTML = html
 // map will return an array so we add .join(' ') to return string
+
+// Format numbers and highlight the matchs
+// create regex to match city name use that regex to place the word it matches
+// and span class of hl that it matches and value it search for
+
