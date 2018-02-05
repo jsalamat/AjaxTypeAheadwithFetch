@@ -47,7 +47,9 @@ fetch(endpoint)
 // return the cities array and filter it down to a subset array which each place
 // here we need to figure out if the city ot state matches what was searched
  	// need to use regex because of variable to use in match reiere regular expression
- 	// regualr expression created outside
+ 	// regular expression created outside eith regex
+ 	// g stand for gloabal and i for insensitive match lower or uppcase regaqrdless
+ 	// now call regex in match city and state
 
 function findMatches(wordToMatch, cities) {
 	return cities.filter(place => {
@@ -57,3 +59,19 @@ function findMatches(wordToMatch, cities) {
 	});
 }
 
+// create a display function
+// if called when values are change in the form
+
+// this to test and select the input
+function displayMatches() {
+	consoe.log(this.value);
+}
+
+// select the input 
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+// listen for the change event and keyup and run displayMatches
