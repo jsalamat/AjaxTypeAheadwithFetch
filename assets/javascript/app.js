@@ -64,7 +64,8 @@ function findMatches(wordToMatch, cities) {
 
 // this to test and select the input
 function displayMatches() {
-	consoe.log(this.value);
+	const matchArray = findMatches(this.value, cities);
+	console.log(matchArray);
 }
 
 // select the input 
@@ -75,3 +76,7 @@ const suggestions = document.querySelector('.suggestions');
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
 // listen for the change event and keyup and run displayMatches
+
+// return to displayMactches and use findMatches
+// variable matchArray that passed in this value and cities array
+//
